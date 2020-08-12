@@ -525,35 +525,52 @@ console.log("The answer to Task A-E combined is: ", result);
 // CATS TASK TWO
 // /* Task 2: Create a function called  getStrays that takes `data` as an argument and returns an array of objects with only Stray data */
 
-let getStrays = cats.filter((item) => {
-  return item.Status === "Stray";
-});
+function getStrays(data) {
+  return data.filter((element) => element.Status === "Stray");
+}
 
-console.log("The Answer to Task 2 is ", getStrays);
+console.log("The answer to task 3 is: the below cats are ", getStrays(cats));
 
 // TASK 3 //
 //  Task 3: Implement a higher-order function called `getYears` that accepts the callback function `getFinals`, and returns an array called `years` containing all of the years in the dataset
 
 // /* Task 3: Implement a higher-order function called `getAge` that accepts the callback function `getStrays`, and returns an array called `age` containing all of the Ages in the dataset */
 
-let getAge = getStrays.map((item) => {
-  let age = [];
-  age = item.Age;
-  return age;
-});
+function getAge(cb, data) {
+  let years = [];
+  cb(data).map((item) => years.push(item.Name) + years.push(item.Age)); //=== 1930 ) )
+  // data.filter(element => (element.stage === "Final")).map(item)
+  return years;
+}
 
-console.log("The answer to Task 3 is ", getAge);
+console.log(
+  "The answer to task 3 is: the ages of the stray cats are: ",
+  getAge(getStrays, cats)
+);
 
-let ageAndName = getStrays.map((item) => {
-  return item.Name + ": age: " + item.Age;
-});
+// let ageAndName = getStrays.map((item) => {
+//   return item.Name + ": age: " + item.Age;
+// });
 
-console.log("Nicer version of Task 3 ", ageAndName);
+// console.log("Nicer version of Task 3 ", ageAndName);
 
 /* Task 4: Implement a higher-order function called `getWinners`, that accepts the callback function `getFinals()` and determine the winner (home or away) of each `finals` game. Return the name of all winning countries in an array called `winners` */
 
-/* Task 4: Implement a higher-order function called `getHowLongWereYouWaiting`, that accepts the callback function `getStrays()` and determines how long Stray cats were waiting to be adopted
-Return the name of all strays that were adopted within one year called luckyCats` */
+/* Task 4: Implement a higher-order function called `luckyCat`, that accepts the callback function `getStrays()` and determines cats that were adopted
+let getWinners = getStrays.map */
+
+let luckyCat = getStrays.forEach;
+
+function lucky(cb, data) {
+  let luckyYears = [];
+  cb(data).forEach((item) => {
+    if (item["Adoption Year"] === item["Birthday Year"]) {
+      luckyYears.push(item["Name"]);
+    }
+  });
+  return luckyYears;
+}
+console.log("Adopted in one year :)", lucky(getStrays, cats));
 
 // Task 5: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!"
 // Parameters:
