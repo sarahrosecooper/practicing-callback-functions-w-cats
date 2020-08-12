@@ -538,7 +538,7 @@ console.log("The answer to task 3 is: the below cats are ", getStrays(cats));
 
 function getAge(cb, data) {
   let years = [];
-  cb(data).map((item) => years.push(item.Name) + years.push(item.Age)); //=== 1930 ) )
+  cb(data).map((item) => years.push(item.Age)); //=== 1930 ) )
   // data.filter(element => (element.stage === "Final")).map(item)
   return years;
 }
@@ -577,7 +577,19 @@ console.log("Adopted in one year :)", lucky(getStrays, cats));
 // callback function getWinners
 // callback function getYears
 
-// Task 5: Implement a higher-order function called `getAdoptionYear` that accepts the following parameters and returns a set of strings "{name} was adopted in {year}; less than a year!"
+// Task 5: Implement a higher-order function called aboutCat that accepts the following parameters and returns a set of strings "{name}  is {age} and was was adopted in one {year}; less than a year!"
+// callback function lucky
+// callback function Age
+
+Parameters: function aboutCat(cb1lucky, cb2age) {
+  let names = cb1lucky(getStrays, cats);
+  let ages = cb2age(getStrays, cats);
+  ages.forEach((item, index) => {
+    console.log(`"I was adopted at ${names[index]} and my names ${item}:) `);
+  });
+}
+
+aboutCat(getAge, lucky);
 
 // /* Task 6: Write a function called `getAverageWaitingToBeAdoptedYear` that accepts a parameter `data` and returns the the average number of years the strays and hoyse cats were waiting to be adopted  (Hint: use .reduce and do this in 2 steps) */
 
